@@ -1,4 +1,5 @@
 import 'package:bringin_assesment/data/models/posts_models.dart';
+import 'package:bringin_assesment/presentation/screen/user_comments_screen.dart';
 import 'package:bringin_assesment/presentation/state_holders/post_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -45,22 +46,43 @@ class _UsersPostsScreenState extends State<UsersPostsScreen> {
           // Use the actual number of user posts
           itemBuilder: (context, index) {
             return Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Title: ${userPosts[index].title ?? " "}",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Post: ${userPosts[index].body ?? " "}",
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w500),
-                  ),
-                ],
+              color: Colors.deepOrangeAccent.shade100,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Title: ${userPosts[index].title ?? " "}",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Get.to(() => CommentsScreen(
+                                postId: userPosts[index].id ?? 0));
+                          },
+                          child: const Text("View Comments"),
+                        )
+                      ],
+                    ),
+                    Text(
+                      "Post: ${userPosts[index].body ?? " "}",
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
               ),
             );
           },

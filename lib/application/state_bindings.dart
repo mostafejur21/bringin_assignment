@@ -1,3 +1,4 @@
+import 'package:bringin_assesment/presentation/state_holders/comments_controller.dart';
 import 'package:get/get.dart';
 
 import '../presentation/state_holders/main_bottom_navbar_controller.dart';
@@ -10,5 +11,6 @@ class StateHoldersBindings extends Bindings {
     Get.put(MainBottomNavController());
     Get.put(UsersController());
     Get.put(PostsController());
+    Get.put(CommentsController());
   }
 }

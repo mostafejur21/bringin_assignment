@@ -1,5 +1,6 @@
 import 'package:bringin_assesment/presentation/screen/home_page.dart';
 import 'package:bringin_assesment/presentation/screen/search_screen.dart';
+import 'package:bringin_assesment/presentation/state_holders/comments_controller.dart';
 import 'package:bringin_assesment/presentation/state_holders/main_bottom_navbar_controller.dart';
 import 'package:bringin_assesment/presentation/state_holders/post_controller.dart';
 import 'package:bringin_assesment/presentation/state_holders/users_controller.dart';
@@ -24,6 +25,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.find<UsersController>().getUsers();
       Get.find<PostsController>().getPostsList();
+      Get.find<CommentsController>().getComments();
     });
     super.initState();
   }
