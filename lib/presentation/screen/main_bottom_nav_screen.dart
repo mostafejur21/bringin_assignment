@@ -32,27 +32,27 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MainBottomNavController>(
-        builder: (controller) {
-          return Scaffold(
-            body: screens[controller.currentSelectedIndex],
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: controller.currentSelectedIndex,
-              unselectedItemColor: Colors.grey,
-              selectedItemColor: Colors.blueAccent,
-              showSelectedLabels: true,
-              type: BottomNavigationBarType.shifting,
-              elevation: 4,
-              onTap: controller.onChanged,
-              items: const [
-                BottomNavigationBarItem(
-                    icon: Icon(CupertinoIcons.home), label: "Home", tooltip: "Home"),
-                BottomNavigationBarItem(
-                    icon: Icon(CupertinoIcons.search), label: "Search"),
-              ],
+    return GetBuilder<MainBottomNavController>(builder: (controller) {
+      return Scaffold(
+        body: screens[controller.currentSelectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: controller.currentSelectedIndex,
+          unselectedItemColor: Colors.grey,
+          selectedItemColor: Colors.blueAccent,
+          showSelectedLabels: true,
+          type: BottomNavigationBarType.fixed,
+          elevation: 4,
+          onTap: controller.onChanged,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.home),
+              label: "Home",
             ),
-          );
-        }
-    );
+            BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.search), label: "Search"),
+          ],
+        ),
+      );
+    });
   }
 }

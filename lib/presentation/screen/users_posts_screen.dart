@@ -46,9 +46,8 @@ class _UsersPostsScreenState extends State<UsersPostsScreen> {
           // Use the actual number of user posts
           itemBuilder: (context, index) {
             return Card(
-              color: Colors.deepOrangeAccent.shade100,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -79,7 +78,10 @@ class _UsersPostsScreenState extends State<UsersPostsScreen> {
                     Text(
                       "Post: ${userPosts[index].body ?? " "}",
                       style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w500),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      textAlign: TextAlign.start,
                     ),
                   ],
                 ),

@@ -43,8 +43,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("User: ${postComments[index].email ?? " "}"),
-                    Text("Comments: ${postComments[index].body ?? " "}"),
+                    Text(
+                      "User: ${postComments[index].email ?? " "}",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Comments: ${postComments[index].body ?? " "}",
+                      textAlign: TextAlign.start,
+                    ),
                   ],
                 ),
               ),
