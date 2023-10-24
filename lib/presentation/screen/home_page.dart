@@ -22,6 +22,18 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("HomePage"),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.wb_sunny,
+            ),
+            onPressed: () {
+              Get.isDarkMode
+                  ? Get.changeThemeMode(ThemeMode.light)
+                  : Get.changeThemeMode(ThemeMode.dark);
+            },
+          )
+        ],
       ),
       body: GetBuilder<UsersController>(builder: (controller) {
         if (controller.isLoading) {
@@ -37,15 +49,21 @@ class _HomePageState extends State<HomePage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
-                  onTap: (){
-                    Get.to(()=>UsersPostsScreen(userId: controller.usersList[index].id ?? 0));
+                  onTap: () {
+                    Get.to(() => UsersPostsScreen(
+                        userId: controller.usersList[index].id ?? 0));
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Name: ${controller.usersList[index].name ?? ""}", style: Theme.of(context).textTheme.titleLarge,),
+                      Text("Name: ${controller.usersList[index].name ?? ""}",
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          )),
                       Text("Email: ${controller.usersList[index].email ?? ""}"),
-                      Text("Company: ${controller.usersList[index].company?.name ?? ""}"),
+                      Text(
+                          "Company: ${controller.usersList[index].company?.name ?? ""}"),
                     ],
                   ),
                 ),
